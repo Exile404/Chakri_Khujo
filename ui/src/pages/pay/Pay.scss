@@ -1,0 +1,63 @@
+#payment-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+    padding-top: 20px;
+  
+    // LinkAuthenticationElement styles
+    #link-authentication-element {
+      margin-bottom: 20px;
+      // Add specific styles for LinkAuthenticationElement here
+    }
+  
+    // PaymentElement styles
+    #payment-element {
+      margin-bottom: 20px;
+      // Add specific styles for PaymentElement here
+    }
+  
+    // Button styles
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 10px;
+  
+      &:hover {
+        background-color: #1dbf73;
+      }
+  
+      &:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+      }
+  
+      // Spinner styles
+      #spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid #3498db;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+      }
+    }
+  
+    // Payment message styles
+    #payment-message {
+      margin-top: 20px;
+      color: #2ecc71; // Success message color
+    }
+  
+    // Animation for spinner
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }
+  

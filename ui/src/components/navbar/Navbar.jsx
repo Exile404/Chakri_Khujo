@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 import "./Navbar.scss";
 
 function Navbar() {
@@ -21,11 +22,19 @@ function Navbar() {
 
   // const currentUser = null
 
-  const currentUser = {
-    id: 1,
-    username: "Dhrubo",
-    isSeller: true,
-  };
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const navigate = useNavigate();
+
+
+  const handleLogout = async ()=>{
+    try{
+        await newRequest.post("/auth/logout");
+        localStorage.setItem('currentUser',null);
+        navigate("/")
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
@@ -43,7 +52,7 @@ function Navbar() {
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={()=>setOpen(!open)}>
-              <img src='https://www.wallpapers13.com/wp-content/uploads/2016/11/Tom-and-Jerry-Jerry-Mouse-Picture-Desktop-Wallpaper-full-HD-1920x1200-840x525.jpg'alt='' />
+              <img src={currentUser.img || '/img/noavatar.jpg'}alt='' />
               <span>{currentUser?.username}</span>
               {open && <div className="options">
                 {currentUser.isSeller && (
@@ -62,14 +71,14 @@ function Navbar() {
                 <Link className="link" to="/messages">
                   Messages
                 </Link>
-                <Link className="link" to="/">
+                <Link className="link" onClick={handleLogout}>
                   Logout
                 </Link>
               </div>}
             </div>
           ) : (
             <>
-              <span>Sign in</span>
+              <Link to ="/login" className="link">Sign in</Link>
               <Link className="link" to="/register">
                 <button>Join</button>
               </Link>

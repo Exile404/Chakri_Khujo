@@ -18,10 +18,10 @@ const Home = () => {
     <Featured />
     <TrustedBy />
     <Slide slidesToShow={5} arrowsScroll={5}>
-    {cards.map(card =>(
-      <CatCard item={card} key={card.id} />
-      ))}
-    </Slide>
+        {cards.map((card) => (
+          <CatCard key={card.id} card={card} />
+        ))}
+      </Slide>
     <Feature />
     <ChakriBusiness />
     <Slide slidesToShow={4} arrowsScroll={4}>
