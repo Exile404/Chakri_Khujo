@@ -49,6 +49,13 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="left">
           <h1>Create a new account</h1>
+          <label htmlFor="">Name</label>
+          <input
+            name="name"
+            type="text"
+            placeholder="johndoe"
+            onChange={handleChange}
+          />
           <label htmlFor="">Username</label>
           <input
             name="username"

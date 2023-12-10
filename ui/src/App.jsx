@@ -26,6 +26,8 @@ import Register from './pages/register/Register';
 import Pay from './pages/pay/Pay';
 import Success from './pages/success/Success';
 import JobForm from './pages/jobForm/JobForm';
+import Profle from './pages/profile/Profle';
+import UpdateProfile from './pages/updateProfile/UpdateProfile';
 
 function App() {
   const queryClient = new QueryClient()
@@ -98,7 +100,15 @@ function App() {
         {
           path: "/job-form/:id",
           element: <JobForm />
-        }
+        },
+        {
+          path: "/profile",
+          element: <Profle />
+        },
+        {
+          path: "/update-profile",
+          element: <UpdateProfile />
+        },
         
       ]
 

@@ -49,12 +49,15 @@ function Navbar() {
           <span>Chakri Business</span>
           <span>Explore</span>
           <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          <Link className="link" to="/profile">Profile</Link>
           {currentUser ? (
             <div className="user" onClick={()=>setOpen(!open)}>
               <img src={currentUser.img || '/img/noavatar.jpg'}alt='' />
               <span>{currentUser?.username}</span>
               {open && <div className="options">
+                <Link className="link" to="/update-profile">
+                  Update Profile
+                </Link>
                 {currentUser.isSeller && (
                   <>
                     <Link className="link" to="/mygigs">
@@ -80,7 +83,7 @@ function Navbar() {
             <>
               <Link to ="/login" className="link">Sign in</Link>
               <Link className="link" to="/register">
-                <button>Join</button>
+                <button className={active || pathname !== "/" ? "button active" : "button"} >Join</button>
               </Link>
             </>
           )}
