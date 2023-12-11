@@ -1,17 +1,20 @@
 import express from "express";
 import {
-  createGig,
+  intent,
   deleteGig,
   getGig,
-  getGigs
+  getGigs,
+  confirm
 } from "../controllers/gig-controller.js";
 import { verifyToken } from "../middleware/jwt.js";
 
+
 const router = express.Router();
 
-router.post("/", verifyToken, createGig);
+router.post("/create-payment-intent/:id", verifyToken, intent);
 router.delete("/:id", verifyToken, deleteGig);
 router.get("/single/:id", getGig);
 router.get("/", getGigs);
+router.put("/confirm", verifyToken, confirm);
 
 export default router;

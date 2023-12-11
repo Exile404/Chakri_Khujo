@@ -3,7 +3,7 @@ import "./Pay.scss";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import newRequest from "../../utils/newRequest";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
 
 const stripePromise = loadStripe(
@@ -12,22 +12,21 @@ const stripePromise = loadStripe(
 
 const Pay = () => {
   const [clientSecret, setClientSecret] = useState("");
-
-  const { id } = useParams();
+  const { state } = useLocation();
+  console.log(state)
+  
 
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await newRequest.post(
-          `/orders/create-payment-intent/${id}`
-        );
+        const res = await newRequest.post(`/gigs/create-payment-intent/${state.userId}`, state);
         setClientSecret(res.data.clientSecret);
       } catch (err) {
         console.log(err);
       }
     };
     makeRequest();
-  }, []);
+  }, [state]);
 
   const appearance = {
     theme: 'stripe',
@@ -36,7 +35,7 @@ const Pay = () => {
     clientSecret,
     appearance,
   };
-
+  
   return <div className="pay">
     {clientSecret && (
         <Elements options={options} stripe={stripePromise}>

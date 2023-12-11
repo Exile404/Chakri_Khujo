@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from "react";
 import "./Add.scss";
-import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducers";
+import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducers.js";
 import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
@@ -48,21 +48,12 @@ const Add = () => {
 
   const navigate = useNavigate();
 
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (gig) => {
-      return newRequest.post("/gigs", gig);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["myGigs"]);
-    },
-  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate(state);
-    navigate("/mygigs")
+    console.log('From Add.jsx',state)
+    navigate("/pay", { state });
+
   };
 
   return (
@@ -112,6 +103,7 @@ const Add = () => {
               rows="16"
               onChange={handleChange}
             ></textarea>
+            
             <button onClick={handleSubmit}>Create</button>
           </div>
           <div className="details">

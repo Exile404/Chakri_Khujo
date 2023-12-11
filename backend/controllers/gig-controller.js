@@ -1,21 +1,45 @@
 import Gig from "../models/gig-model.js";
 import createError from "../utils/createError.js";
+import Stripe from "stripe";
 
-export const createGig = async (req, res, next) => {
-  if (!req.isSeller)
-    return next(createError(403, "Only sellers can create a gig!"));
-
-  const newGig = new Gig({
-    userId: req.userId,
-    ...req.body,
+export const intent = async (req, res, next) => {
+  const stripe = new Stripe(process.env.STRIPE);
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 50,
+    currency: "usd",
+    automatic_payment_methods: {
+      enabled: true,
+    },
   });
 
+ 
+  console.log('Hello')
+  console.log(req.body);
+  const newGig = new Gig({
+    userId : req.body.userId,
+    title: req.body.title,
+    cat: req.body.cat,
+    cover: req.body.cover,
+    images: req.body.images,
+    desc: req.body.desc,
+    shortTitle: req.body.shortTitle,
+    shortDesc: req.body.shortDesc,
+    deliveryTime: req.body.deliveryTime,
+    revisionNumber: req.body.revisionNumber,
+    features: req.body.features,
+    price: req.body.price,
+    payment_intent: paymentIntent.id
+
+  })
   try {
-    const savedGig = await newGig.save();
-    res.status(201).json(savedGig);
+    await newGig.save();
+    res.status(200).send({
+      clientSecret: paymentIntent.client_secret,
+    });
   } catch (err) {
     next(err);
   }
+  
 };
 export const deleteGig = async (req, res, next) => {
   try {
@@ -54,6 +78,27 @@ export const getGigs = async (req, res, next) => {
   try {
     const gigs = await Gig.find(filters).sort({ [q.sort]: -1 });
     res.status(200).send(gigs);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const confirm = async (req, res, next) => {
+  try {
+    console.log('Received request!'); // This will log every time a request is received
+
+    const gigs = await Gig.findOneAndUpdate(
+      {
+        payment_intent: req.body.payment_intent,
+      },
+      {
+        $set: {
+          isCompleted: true,
+        },
+      }
+    );
+
+    res.status(200).send("Order has been confirmed.");
   } catch (err) {
     next(err);
   }

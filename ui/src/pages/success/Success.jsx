@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import newRequest from "../../utils/newRequest";
+import newRequest from "../../utils/newRequest.js";
 import "./Success.scss"
 
 
@@ -11,19 +11,23 @@ const Success = () => {
   const payment_intent = params.get("payment_intent");
 
   useEffect(() => {
+    console.log('Component rendered!'); // This will log every time the component renders
+  
     const makeRequest = async () => {
       try {
-        await newRequest.put("/orders", { payment_intent });
+        console.log('Making request...'); // This will log every time a request is made
+        await newRequest.put("/gigs/confirm", { payment_intent });
         setTimeout(() => {
-          navigate("/orders");
+          navigate("/mygigs");
         }, 5000);
       } catch (err) {
         console.log(err);
       }
     };
-
+  
     makeRequest();
   }, []);
+  
 
   return (
     <div className="success">
