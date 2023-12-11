@@ -4,48 +4,42 @@ export const cards = [
       title: "AI Artists",
       desc: "Add talent to AI",
       img: "https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      cat: "ai"
     },
     {
       id: 2,
       title: "Logo Design",
       desc: "Build yor brand",
       img: "https://images.pexels.com/photos/11295165/pexels-photo-11295165.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      cat: "design"
     },
     {
       id: 3,
-      title: "WordPress",
+      title: "Website",
       desc: "Customize your site",
       img: "https://images.pexels.com/photos/4371669/pexels-photo-4371669.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      cat: "web"
     },
     {
       id: 4,
-      title: "Voice Over",
+      title: "Animation",
       desc: "Share your message",
       img: "https://images.pexels.com/photos/7608079/pexels-photo-7608079.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      cat: "animation"
     },
     {
       id: 5,
-      title: "Video Explainer",
+      title: "Video",
       desc: "Engage your audience",
       img: "https://images.pexels.com/photos/13388047/pexels-photo-13388047.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      cat: "video"
     },
     {
       id: 6,
-      title: "Social Media",
-      desc: "Reach more customers",
-      img: "https://images.pexels.com/photos/11378899/pexels-photo-11378899.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    },
-    {
-      id: 7,
-      title: "SEO",
-      desc: "Unlock growth online",
-      img: "https://images.pexels.com/photos/4820241/pexels-photo-4820241.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    },
-    {
-      id: 8,
       title: "Illustration",
       desc: "Color you dreams",
       img: "https://images.pexels.com/photos/15032623/pexels-photo-15032623.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+      cat: "design"
     },
   ];
   

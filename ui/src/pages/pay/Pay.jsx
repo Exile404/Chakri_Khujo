@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import newRequest from "../../utils/newRequest";
 import { useLocation, useParams } from "react-router-dom";
 import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
+import { v4 as uuidv4 } from 'uuid';
 
 const stripePromise = loadStripe(
   "pk_test_51OKKQCIYNwtwWGpJGpEx8HLsG7sIX31bFJBEkHbe9y5GglZ0ow792DLOCyFdu7s7Nj6HAR9u1QZomA00JlYctPFY0093YW6se2"
@@ -14,7 +15,7 @@ const Pay = () => {
   const [clientSecret, setClientSecret] = useState("");
   const { state } = useLocation();
   console.log(state)
-  
+  state.idNum = uuidv4();
 
   useEffect(() => {
     const makeRequest = async () => {

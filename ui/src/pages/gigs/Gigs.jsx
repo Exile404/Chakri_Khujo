@@ -43,7 +43,7 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">Chakri-Khujo &gt; Graphics & Design &gt;</span>
+        <span className="breadcrumbs">Chakri-Khujo </span>
         <h1>AI Artists</h1>
         <p>
           Explore the boundaries of art and technology with Chakri-Khujo's AI artists

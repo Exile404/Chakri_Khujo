@@ -2,6 +2,7 @@ import Gig from "../models/gig-model.js";
 import createError from "../utils/createError.js";
 import Stripe from "stripe";
 
+
 export const intent = async (req, res, next) => {
   const stripe = new Stripe(process.env.STRIPE);
   const paymentIntent = await stripe.paymentIntents.create({
@@ -11,11 +12,13 @@ export const intent = async (req, res, next) => {
       enabled: true,
     },
   });
-
- 
+  
+  
+  
   console.log('Hello')
   console.log(req.body);
   const newGig = new Gig({
+    idNum: req.body.idNum,
     userId : req.body.userId,
     title: req.body.title,
     cat: req.body.cat,

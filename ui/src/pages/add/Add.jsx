@@ -51,7 +51,7 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('From Add.jsx',state)
+    // console.log('From Add.jsx',state)
     navigate("/pay", { state });
 
   };
@@ -75,6 +75,12 @@ const Add = () => {
               <option value="web">Web Development</option>
               <option value="animation">Animation</option>
               <option value="music">Music</option>
+              <option value="marketing">Marketing</option>
+              <option value="programming">Programming</option>
+              <option value="ai">AI</option>
+              <option value="business">Business</option>
+              <option value="blogger">Blogger</option>
+
             </select>
             <div className="images">
               <div className="imagesInputs">
@@ -123,9 +129,9 @@ const Add = () => {
               cols="30"
               rows="10"
             ></textarea>
-            <label htmlFor="">Delivery Time (e.g. 3 days)</label>
+            <label htmlFor="">Apply within</label>
             <input type="number" name="deliveryTime" onChange={handleChange} />
-            <label htmlFor="">Revision Number</label>
+            <label htmlFor="">Necessity</label>
             <input
               type="number"
               name="revisionNumber"
@@ -134,7 +140,7 @@ const Add = () => {
             <label htmlFor="">Add Features</label>
             <form action="" className="add" onSubmit={handleFeature}>
               <input type="text" placeholder="e.g. page design" />
-              <button type="submit">add</button>
+              <button type="submit">Add</button>
             </form>
             <div className="addedFeatures">
               {state?.features?.map((f) => (
