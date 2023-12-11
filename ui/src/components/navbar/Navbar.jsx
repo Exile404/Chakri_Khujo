@@ -69,7 +69,7 @@ function Navbar() {
                   </>
                 )}
                 <Link className="link" to="/orders">
-                  Orders
+                  Jobs
                 </Link>
                 <Link className="link" to="/messages">
                   Messages
