@@ -51,8 +51,8 @@ function MyGigs() {
             <tr>
               <th>Image</th>
               <th>Title</th>
-              <th>Price</th>
-              <th>Sales</th>
+              <th>Salary</th>
+              <th>Applied for</th>
               <th>Action</th>
             </tr>
             {data.map((gig) => (

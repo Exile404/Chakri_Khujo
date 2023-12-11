@@ -64,7 +64,7 @@ function Navbar() {
                       Gigs
                     </Link>
                     <Link className="link" to="/add">
-                      Add New Gig
+                      Add New job
                     </Link>
                   </>
                 )}

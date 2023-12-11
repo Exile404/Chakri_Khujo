@@ -48,7 +48,7 @@ const Orders = () => {
             <tr>
               <th>Image</th>
               <th>Title</th>
-              <th>Price</th>
+              <th>Salary</th>
               <th>Contact</th>
             </tr>
             {data.map((order) => (
