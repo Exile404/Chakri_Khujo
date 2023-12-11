@@ -46,8 +46,7 @@ function Navbar() {
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <span>Chakri Business</span>
-          <span>Explore</span>
+  
           <span>English</span>
           <Link className="link" to="/profile">Profile</Link>
           {currentUser ? (
@@ -61,7 +60,7 @@ function Navbar() {
                 {currentUser.isSeller && (
                   <>
                     <Link className="link" to="/mygigs">
-                      Gigs
+                      Created Job List
                     </Link>
                     <Link className="link" to="/add">
                       Add New job
