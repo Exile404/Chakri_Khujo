@@ -42,7 +42,7 @@ function Gig() {
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-              Fiverr {">"} Graphics & Design {">"}
+              Fiverr 
             </span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
@@ -157,7 +157,7 @@ function Gig() {
               ))}
             </div>
             <Link to={`/job-form/${id}`}>
-              <button>Continue</button>
+              <button>Apply</button>
             </Link>
           </div>
         </div>

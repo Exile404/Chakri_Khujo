@@ -17,12 +17,14 @@ function Gigs() {
     queryKey: ["gigs"],
     queryFn: () =>
       newRequest
-        .get(
-          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
-        )
-        .then((res) => {
-          return res.data;
-        }),
+        .get(`/gigs${search}`, {
+          params: {
+            min: minRef.current.value,
+            max: maxRef.current.value,
+            sort: sort,
+          },
+        })
+        .then((res) => res.data),
   });
 
   console.log(data);
@@ -43,10 +45,10 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">Chakri-Khujo </span>
+        <span className="breadcrumbs">Liverr</span>
         <h1>AI Artists</h1>
         <p>
-          Explore the boundaries of art and technology with Chakri-Khujo's AI artists
+          Explore the boundaries of art and technology with Liverr's AI artists
         </p>
         <div className="menu">
           <div className="left">
@@ -74,7 +76,11 @@ function Gigs() {
           </div>
         </div>
         <div className="cards">
-          {isLoading? "loading" : error ? "Something went wrong!" : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
+          {isLoading
+            ? "loading"
+            : error
+            ? "Something went wrong!"
+            : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>
